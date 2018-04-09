@@ -1,0 +1,140 @@
+---
+title: "Field Code state to state network graph"
+---
+
+We are going to work with a network graph that shows the level of state to state borrowings of codes of civil procedure in the nineteenth century. Notice that the data for code-to-code borrowings are also available in this repository.
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(igraph)
+```
+
+## Loading the data and creating the graph
+
+Networks are defined by a data frame of edges and (optionally) a data frame of nodes. An edge table has two columns of node names showing a connection between them. A node table has one column of node names. Optionally, both can include additional columns of metadata specific to nodes or edges.
+
+```{r, message=FALSE}
+edges_df <-read_csv("field-states-edges.csv")
+nodes_df <-read_csv("field-states-nodes.csv")
+```
+
+We can turn those data frames into a graph (the mathematical term for a network).
+
+```{r}
+g <- graph_from_data_frame(edges_df, directed = TRUE, vertices = nodes_df)
+g <- g %>% as_tbl_graph()
+g
+```
+
+We can get a quick look at the graph using `plot()`
+
+```{r}
+plot(g)
+```
+
+## Measuring the centrality of nodes
+
+The importance, called *centrality*, of a node can be measured with various algorithms. These can be added to the graph object as node attributes using `mutate()`. Note that below we pull out the nodes data frame to inspect it and do not save the results back to our graph object `g` just yet.
+
+Look at the definitions given in *The Historian's Macroscope* and follow the links to the documentation for the various functions using `?centrality`. Also use your intution from the visualization of the graph above. What measure of centrality is most appropriate for this graph?
+
+```{r}
+centrality <- g %>% 
+  mutate(c_authority = centrality_authority() %>% round(4),
+         c_betweenness = centrality_betweenness() %>% round(4),
+         c_closeness = centrality_closeness() %>% round(4),
+         c_eigen = centrality_eigen() %>% round(4),
+         c_hub = centrality_hub() %>% round(4),
+         c_pagerank = centrality_pagerank() %>% round(4),
+         c_communicability = centrality_communicability() %>% round(4)) %>% 
+  as_data_frame(what = "vertices") 
+centrality
+```
+
+## Plotting
+
+Networks can be plotted within the ggplot2 framework using the ggraph package. You will need to include geoms for both edges (`geom_edge_*`) and nodes (`geom_node_*`)
+
+```{r}
+ggraph(g, layout = "nicely") +
+  geom_edge_fan(arrow = arrow(ends = "first")) +
+  geom_node_point(aes(color = region), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Clustering
+
+```{r}
+groups <- g %>% 
+  mutate(infomap = as.factor(group_infomap()),
+         walktrap = as.factor(group_walktrap()),
+         components = as.factor(group_components()),
+         betweenness = as.factor(group_edge_betweenness()))
+
+ggraph(groups, layout = "nicely") +
+  geom_edge_fan() +
+  geom_node_point(aes(color = components), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Node-pair level measures
+
+```{r}
+distances <- g %>% 
+  mutate(is_ny = name == "NY",
+         distance = node_distance_from(is_ny, mode = "in")) 
+
+ggraph(distances, layout = "nicely") +
+  geom_edge_fan(arrow = arrow(ends = "first")) +
+  geom_node_point(aes(color = as.factor(distance)), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Component graphs
+
+Sometimes parts of a graph are unconnected to other graphs, and it would be nice to pull them out into separate pieces.
+
+```{r}
+components <- g %>% to_components()
+
+plot(components[[1]])
+plot(components[[2]])
+plot(components[[3]])
+```
+
+## Bipartite graphs
+
+A bipartite graph is a graph where the nodes fall into two different groups, and where members of a group are never connected to one another. A common example is a membership graph, with organizations and members. We can load a membership graph for revolutionary organizations in Boston.
+
+```{r, message=FALSE}
+revere_edges <-read_csv("paul-revere-edges.csv")
+revere_bip <- graph_from_data_frame(revere_edges)
+```
+
+Now that we have the graph loaded we can project it. We have to distinguish between the `type` of the nodes---which belong to which side of the projection.
+
+```{r}
+V(revere_bip)$type <- bipartite_mapping(revere_bip)$type
+table(V(revere_bip)$type)
+bipartite_projection_size(revere_bip)
+```
+In this case `TRUE` will correspond to an organization and `FALSE` to an individual. We should also check how big our resulting graphs would be.
+
+```{r}
+revere_org <- bipartite_projection(revere_bip, which = "true")
+plot(revere_org)
+```
+
+## In-class assignment
+
+Option 1: Redo some of these analyses using the Field Code code-to-code level data. Try plotting the codes by a centrality measure. Get as close as you can to a presentation graphic.
+
+- `field-codes-edges.csv`
+- `field-codes-nodes.csv`
+
+Option 2: Reproduce Kieran Healy's analysis from this [blog post](https://kieranhealy.org/blog/archives/2013/06/09/using-metadata-to-find-paul-revere/). Use `paul-revere-edges.csv`. Get as close as you can to a presentation graphic.
