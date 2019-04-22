@@ -42,13 +42,15 @@ Look at the definitions given in *The Historian's Macroscope* and follow the lin
 
 ```{r}
 centrality <- g %>% 
-  mutate(c_authority = centrality_authority() %>% round(4),
-         c_betweenness = centrality_betweenness() %>% round(4),
-         c_closeness = centrality_closeness() %>% round(4),
-         c_eigen = centrality_eigen() %>% round(4),
-         c_hub = centrality_hub() %>% round(4),
-         c_pagerank = centrality_pagerank() %>% round(4),
-         c_communicability = centrality_communicability() %>% round(4)) %>% 
+  mutate(
+    c_degree = centrality_degree() %>% round(4),
+    c_betweenness = centrality_betweenness() %>% round(4),
+    c_closeness = centrality_closeness() %>% round(4),
+    c_pagerank = centrality_pagerank() %>% round(4),
+    # c_eigen = centrality_eigen() %>% round(4),
+    # c_hub = centrality_hub() %>% round(4),
+    # c_communicability = centrality_communicability() %>% round(4)
+         ) %>% 
   as_data_frame(what = "vertices") 
 centrality
 ```

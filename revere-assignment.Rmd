@@ -25,6 +25,7 @@ Now turn the edges of people-to-organization into a graph object, and use the sa
 ```{r}
 revere_bip <- graph_from_data_frame(edges_df, directed = FALSE) %>% 
   as_tbl_graph()
+revere_bip
 ```
 
 ## Project the bipartite network graph 
@@ -47,13 +48,13 @@ Measure the centrality of the nodes (i.e., the people). You will have to try sev
 ```{r}
 people_g <- people_g %>% 
   mutate(c_degree = centrality_degree() %>% round(4),
-         c_authority = centrality_authority() %>% round(4),
          c_betweenness = centrality_betweenness() %>% round(4),
          c_closeness = centrality_closeness() %>% round(4),
-         c_eigen = centrality_eigen() %>% round(4),
-         c_hub = centrality_hub() %>% round(4),
-         c_pagerank = centrality_pagerank() %>% round(4),
-         c_communicability = centrality_communicability() %>% round(4)) 
+         # c_eigen = centrality_eigen() %>% round(4),
+         # c_hub = centrality_hub() %>% round(4),
+         # c_pagerank = centrality_pagerank() %>% round(4),
+         # c_communicability = centrality_communicability() %>% round(4)
+         ) 
 ```
 
 Which centrality measure did you find most reliable and why?
