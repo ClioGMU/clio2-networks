@@ -1,8 +1,12 @@
 ---
-title: "Field Code state to state network graph"
+title: "Network analysis demo"
 ---
 
-We are going to work with a network graph that shows the level of state to state borrowings of codes of civil procedure in the nineteenth century. Notice that the data for code-to-code borrowings are also available in this repository.
+Networks (also called graphs) are a way of studying connections. Many different kinds of things that we might want to study historically can be connections. For instance, correspondence between individuals can show the structure of a group. Migration between countries is a kind of a network. So too are borrowings between texts. Once you understand the concept of connections and the typical structure of network data, you will find networks everywhere.
+
+In addition to the tidyverse package, we will need three other packages. The igraph package provides the low-level understanding of networks and how to analyze then. The tidygraph package lets us manipulate network data using the tidyverse style functions we are used to. And the ggraph package lets us plot networks using ggplot2. You can install these with `install.packages(c("tidygraph", "ggraph", "igraph"))`.
+
+We start by loading the packages.
 
 ```{r setup, include=FALSE}
 library(tidyverse)
@@ -10,6 +14,8 @@ library(tidygraph)
 library(ggraph)
 library(igraph)
 ```
+
+We are going to work with a network graph that shows the level of state to state borrowings of codes of civil procedure in the nineteenth century. For example, California heavily borrowed its laws from New York, and Oregon borrowed its laws from California.
 
 ## Loading the data and creating the graph
 
