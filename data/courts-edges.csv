@@ -1,0 +1,154 @@
+from,to,weight
+"U. S. District Court, Western District of Pennsylvania",U. S. Circuit Courts for the Third Circuit,2
+"U. S. District Court, Western District of Pennsylvania",U. S. Court of Appeals for the Third Circuit,2
+"U. S. District Court, Eastern District of Missouri",U. S. Circuit Courts for the Eighth Circuit,2
+"U. S. District Court, Eastern District of Missouri",U. S. Court of Appeals for the Eighth Circuit,2
+"U. S. District Court, District of Mississippi","U. S. District Court, Northern District of Mississippi",1
+"U. S. District Court, District of Mississippi","U. S. District Court, Southern District of Mississippi",1
+"U. S. District Court, Southern District of New York",Supreme Court of the United States,1
+"U. S. District Court, Southern District of New York",U. S. Circuit Courts for the Second Circuit,1
+"U. S. District Court, Southern District of New York",U. S. Court of Appeals for the Second Circuit,2
+"U. S. District Court, Southern District of New York","U. S. District Court, District of New York",1
+U. S. Court of Appeals for the Seventh Circuit,U. S. Circuit Courts for the Seventh Circuit,9
+U. S. Court of Appeals for the Seventh Circuit,"U. S. District Court, District of Indiana",2
+U. S. Court of Appeals for the Seventh Circuit,"U. S. District Court, Northern District of Illinois",2
+U. S. Court of Appeals for the Seventh Circuit,"U. S. District Court, Eastern District of Wisconsin",2
+U. S. Court of Appeals for the Seventh Circuit,Commerce Court,1
+U. S. Court of Appeals for the District of Columbia Circuit,U. S. District Court for the District of Columbia [Supreme Court of the District of Columbia],1
+"U. S. District Court, District of Indiana",U. S. Circuit Courts for the Seventh Circuit,2
+U. S. Court of Appeals for the First Circuit,"U. S. District Court, District of Rhode Island",1
+U. S. Court of Appeals for the First Circuit,U. S. Circuit Courts for the First Circuit,4
+U. S. Court of Appeals for the First Circuit,"U. S. District Court, District of Massachusetts",2
+U. S. District Court for the District of Columbia [Supreme Court of the District of Columbia],Circuit Court of the District of Columbia,1
+U. S. District Court for the District of Columbia [Supreme Court of the District of Columbia],U. S. Circuit Courts for the Fourth Circuit,1
+U. S. District Court for the District of Columbia [Supreme Court of the District of Columbia],U. S. Court of Appeals for the Fourth Circuit,1
+"U. S. District Court, Eastern District of Michigan",Supreme Court of the United States,1
+"U. S. District Court, Eastern District of Michigan","U. S. District Court, District of Michigan",1
+"U. S. District Court, Middle District of Pennsylvania",U. S. Circuit Courts for the Third Circuit,1
+"U. S. District Court, Middle District of Pennsylvania",U. S. Court of Appeals for the Third Circuit,1
+"U. S. District Court, Middle District of Pennsylvania",Commerce Court,1
+Court of Claims,"U. S. District Court, Eastern District of Illinois",1
+U. S. Circuit Courts for the Seventh Circuit,"U. S. District Court, Northern District of Illinois",3
+U. S. Circuit Courts for the Seventh Circuit,"U. S. District Court, District of Illinois",1
+U. S. Circuit Courts for the Seventh Circuit,"U. S. District Court, Eastern District of Wisconsin",2
+U. S. Circuit Courts for the Seventh Circuit,Commerce Court,1
+Supreme Court of the United States,"U. S. District Court, Eastern District of Virginia",2
+Supreme Court of the United States,U. S. Circuit Courts for the Second Circuit,1
+Supreme Court of the United States,U. S. Circuit Courts for the Eighth Circuit,2
+Supreme Court of the United States,"U. S. District Court, Northern District of Ohio",1
+Supreme Court of the United States,U. S. Circuit Courts for the Sixth Circuit,3
+Supreme Court of the United States,U. S. Court of Appeals for the Sixth Circuit,3
+Supreme Court of the United States,U. S. Circuit Courts for the Ninth Circuit,1
+Supreme Court of the United States,U. S. Court of Appeals for the Ninth Circuit,1
+Supreme Court of the United States,"U. S. District Court, District of Kentucky",1
+Supreme Court of the United States,U. S. Court of Appeals for the Eighth Circuit,1
+Supreme Court of the United States,U. S. Circuit Courts for the Fifth Circuit,1
+"U. S. District Court, District of Kentucky","U. S. District Court, Western District of Kentucky",1
+U. S. Court of Customs Appeals (later Customs and Patent Appeals),"U. S. District Court, District of Montana",1
+U. S. Court of Customs Appeals (later Customs and Patent Appeals),U. S. Circuit Courts for the Ninth Circuit,1
+U. S. Court of Customs Appeals (later Customs and Patent Appeals),U. S. Court of Appeals for the Ninth Circuit,1
+U. S. Court of Customs Appeals (later Customs and Patent Appeals),Commerce Court,1
+"U. S. District Court, Eastern District of Virginia","U. S. District Court, District of Virginia",3
+"U. S. District Court, District of Rhode Island",U. S. Circuit Court for the First Circuit,1
+"U. S. District Court, District of Rhode Island",U. S. Circuit Courts for the First Circuit,1
+U. S. Court of Appeals for the Fifth Circuit,"U. S. District Court, Northern District of Texas",1
+U. S. Court of Appeals for the Fifth Circuit,U. S. Circuit Courts for the Fifth Circuit,3
+U. S. Circuit Courts for the Sixth Circuit,U. S. Court of Appeals for the Sixth Circuit,9
+U. S. Circuit Courts for the Sixth Circuit,"U. S. District Court, Western District of Michigan",3
+"U. S. District Court, District of South Carolina",U. S. Circuit Courts for the Fourth Circuit,1
+"U. S. District Court, District of South Carolina",U. S. Court of Appeals for the Fourth Circuit,1
+"U. S. District Court, District of South Carolina","U. S. District Court, Western District of South Carolina",1
+"U. S. District Court, District of South Carolina","U. S. District Court, Eastern District of South Carolina",1
+U. S. Circuit Court for the Second Circuit,"U. S. District Court, District of Vermont",1
+"U. S. District Court, Northern District of Illinois","U. S. District Court, District of Illinois",1
+"U. S. District Courts, Albemarle, Cape Fear & Pamptico Districts of North Carolina","U. S. District Court, Eastern District of North Carolina",1
+"U. S. District Courts, Albemarle, Cape Fear & Pamptico Districts of North Carolina",U. S. Circuit Court for the Fifth Circuit,1
+"U. S. District Courts, Albemarle, Cape Fear & Pamptico Districts of North Carolina","U. S. District Court, District of North Carolina",2
+"U. S. District Courts, Albemarle, Cape Fear & Pamptico Districts of North Carolina","U. S. District Courts, Edenton, New Bern & Wilmington Districts of North Carolina",1
+"U. S. District Court, District of Louisiana","U. S. District Court, Eastern District of Louisiana",5
+"U. S. District Court, District of Louisiana","U. S. District Court, Western District of Louisiana",2
+"U. S. District Court, District of Louisiana",U. S. Circuit Court for the Fifth Circuit,2
+"U. S. District Court, District of Louisiana","U. S. District Court, District of Orleans",2
+"U. S. District Court, Southern District of California","U. S. District Court, Northern District of California",2
+"U. S. District Court, Southern District of California","U. S. District Court, District of California",1
+"U. S. District Court, Southern District of California",U. S. Circuit Courts for the Ninth Circuit,1
+"U. S. District Court, Southern District of California",U. S. Court of Appeals for the Ninth Circuit,1
+"U. S. District Court, Western District of Louisiana","U. S. District Court, Eastern District of Louisiana",6
+"U. S. District Court, District of New Jersey",U. S. Court of Appeals for the Third Circuit,3
+"U. S. District Court, District of New Jersey",U. S. Circuit Courts for the Third Circuit,1
+"U. S. District Court, District of New Jersey",U. S. District Court for the Eastern District of New Jersey,2
+"U. S. District Court, District of New Jersey",U. S. District Court for the Western District of New Jersey,2
+U. S. Circuit Courts for the Fourth Circuit,U. S. Court of Appeals for the Fourth Circuit,4
+"U. S. District Court, District of Montana",U. S. Circuit Courts for the Ninth Circuit,1
+"U. S. District Court, District of Montana",U. S. Court of Appeals for the Ninth Circuit,1
+"U. S. District Court, District of Montana",Commerce Court,1
+U. S. Circuit Courts for the Eighth Circuit,U. S. Court of Appeals for the Eighth Circuit,8
+U. S. Circuit Courts for the Eighth Circuit,"U. S. District Court, Western District of Arkansas",1
+U. S. Circuit Courts for the Eighth Circuit,"U. S. District Court, Eastern District of Arkansas",1
+U. S. Circuit Courts for the Eighth Circuit,"U. S. District Court, District of South Dakota",1
+U. S. Circuit Courts for the Eighth Circuit,Commerce Court,1
+U. S. Circuit Courts for the Eighth Circuit,"U. S. District Court, District of Kansas",1
+"U. S. District Court, District of Connecticut",U. S. Circuit Courts for the Second Circuit,2
+"U. S. District Court, District of Connecticut",U. S. Court of Appeals for the Second Circuit,2
+"U. S. District Court, Western District of Virginia","U. S. District Court, Northern District of West Virginia",1
+"U. S. District Court, Western District of Virginia","U. S. District Court, District of West Virginia",1
+"U. S. District Court, District of Florida","U. S. District Court, Northern District of Florida",1
+"U. S. District Court, Eastern District of Tennessee","U. S. District Court, Western District of Tennessee",4
+"U. S. District Court, Eastern District of Tennessee","U. S. District Court, Middle District of Tennessee",6
+"U. S. District Court, Eastern District of Tennessee","U. S. District Court, District of Tennessee",1
+"U. S. District Court, Southern District of Alabama","U. S. District Court, Middle District of Alabama",6
+"U. S. District Court, Southern District of Alabama","U. S. District Court, Northern District of Alabama",7
+"U. S. District Court, Southern District of Alabama","U. S. District Court, District of Alabama",1
+"U. S. District Court, Eastern District of Texas","U. S. District Court, District of Texas",1
+"U. S. District Court, Middle District of Alabama","U. S. District Court, Northern District of Alabama",8
+"U. S. District Court, Eastern District of Pennsylvania",U. S. Court of Appeals for the Third Circuit,1
+"U. S. District Court, Eastern District of Pennsylvania","U. S. District Court, District of Pennsylvania",1
+"U. S. District Court, District of Ohio","U. S. District Court, Southern District of Ohio",1
+"U. S. District Court, Western District of Arkansas",U. S. Court of Appeals for the Eighth Circuit,1
+"U. S. District Court, Western District of Arkansas","U. S. District Court, Eastern District of Arkansas",2
+"U. S. District Court, Western District of Arkansas","U. S. District Court, District of Arkansas",1
+"U. S. District Court, District of South Dakota",U. S. Court of Appeals for the Eighth Circuit,1
+"U. S. District Court, District of South Dakota",Commerce Court,1
+"U. S. District Court, District of Georgia","U. S. District Court, Northern District of Georgia",1
+"U. S. District Court, District of Georgia","U. S. District Court, Southern District of Georgia",1
+"U. S. District Court, Northern District of New York",U. S. Circuit Courts for the Second Circuit,2
+"U. S. District Court, Northern District of New York",U. S. Court of Appeals for the Second Circuit,2
+"U. S. District Court, Northern District of New York","U. S. District Court, District of New York",1
+Circuit Court of the District of Columbia,Circuit Court of the District of Columbia USCC,2
+"U. S. District Court, Northern District of Alabama","U. S. District Court, District of Alabama",1
+"U. S. District Court, Western District of Washington","U. S. District Court, District of Washington",1
+U. S. Circuit Courts for the Third Circuit,U. S. Court of Appeals for the Third Circuit,6
+U. S. Circuit Courts for the Third Circuit,Commerce Court,1
+"U. S. District Court, District of Massachusetts",U. S. Circuit Courts for the First Circuit,2
+"U. S. District Court, District of Massachusetts",U. S. Circuit Court for the First Circuit,1
+"U. S. District Court, Northern District of West Virginia","U. S. District Court, District of West Virginia",1
+"U. S. District Court, Northern District of California","U. S. District Court, District of California",2
+"U. S. District Court, Northern District of California",U. S. Circuit Courts for the Ninth Circuit,1
+"U. S. District Court, Northern District of California",U. S. Court of Appeals for the Ninth Circuit,1
+"U. S. District Court, District of Kansas",U. S. Court of Appeals for the Eighth Circuit,1
+"U. S. District Court, Western District of Michigan",U. S. Court of Appeals for the Sixth Circuit,3
+"U. S. District Court, Eastern District of Wisconsin","U. S. District Court, District of Wisconsin",1
+"U. S. District Court, District of Iowa","U. S. District Court, Southern District of Iowa",1
+"U. S. District Court, Northern District of Georgia","U. S. District Court, Southern District of Georgia",2
+"U. S. District Court, Northern District of Mississippi","U. S. District Court, Southern District of Mississippi",5
+U. S. Circuit Courts for the Ninth Circuit,U. S. Court of Appeals for the Ninth Circuit,6
+U. S. Circuit Courts for the Ninth Circuit,Commerce Court,1
+U. S. Circuit Court for the Fifth Circuit,"U. S. District Court, District of Orleans",1
+"U. S. District Court, Western District of Tennessee","U. S. District Court, Middle District of Tennessee",3
+"U. S. District Court, Western District of Tennessee","U. S. District Court, District of Tennessee",1
+U. S. Circuit Courts for the Second Circuit,U. S. Court of Appeals for the Second Circuit,8
+U. S. Circuit Courts for the Second Circuit,U. S. Court of Appeals for the Fourth Circuit,1
+U. S. Circuit Courts for the Second Circuit,Commerce Court,1
+"U. S. District Court, District of Arkansas","U. S. District Court, Eastern District of Arkansas",1
+"U. S. District Court, Western District of South Carolina","U. S. District Court, Eastern District of South Carolina",1
+"U. S. District Court, Western District of Missouri","U. S. District Court, District of Missouri",1
+"U. S. District Court, Northern District of Texas",U. S. Circuit Courts for the Fifth Circuit,1
+U. S. Court of Appeals for the Second Circuit,U. S. Court of Appeals for the Fourth Circuit,1
+U. S. Court of Appeals for the Second Circuit,Commerce Court,1
+"U. S. District Court, District of North Carolina","U. S. District Courts, Edenton, New Bern & Wilmington Districts of North Carolina",2
+U. S. Court of Appeals for the Eighth Circuit,"U. S. District Court, Eastern District of Arkansas",1
+U. S. Court of Appeals for the Eighth Circuit,Commerce Court,1
+U. S. Court of Appeals for the Fourth Circuit,Commerce Court,1
+U. S. Court of Appeals for the Third Circuit,Commerce Court,1
+U. S. Court of Appeals for the Ninth Circuit,Commerce Court,1
+U. S. District Court for the Eastern District of New Jersey,U. S. District Court for the Western District of New Jersey,1
