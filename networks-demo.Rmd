@@ -1,0 +1,170 @@
+---
+title: "Network analysis demo"
+---
+
+Networks (also called graphs) are a way of studying connections. Many different kinds of things that we might want to study historically can be connections. For instance, correspondence between individuals can show the structure of a group. Migration between countries is a kind of a network. So too are borrowings between texts. Once you understand the concept of connections and the typical structure of network data, you will find networks everywhere.
+
+In addition to the tidyverse package, we will need three other packages. The igraph package provides the low-level understanding of networks and how to analyze then. The tidygraph package lets us manipulate network data using the tidyverse style functions we are used to. And the ggraph package lets us plot networks using ggplot2. Optionally, the netrankr package helps us measure things about networks. You can install these with `install.packages(c("tidygraph", "ggraph", "igraph", "netrankr"))`.
+
+We start by loading the packages.
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(igraph)
+```
+
+We are going to work with a network graph that shows the level of state to state borrowings of codes of civil procedure in the nineteenth century. For example, California heavily borrowed its laws from New York, and Oregon borrowed its laws from California.
+
+## Loading the data and creating the graph
+
+Networks are defined by a tidy data frame of edges and (optionally) a tidy data frame of nodes. The nodes are the things that are connected, and the edges are the connections between them. A node table has one column with of node names,with one row for each node. Optionally there can be additional columns describing additional variables about the nodes. An edge table has at least two columns of node names showing a connection between them. The edge table can optionally include additional columns of data that describe the connections. If you needed to, you could even just use the edges table, because you can deduce a basic nodes table from the edges. (If you know that A is connected to B, then that implies that A and B are nodes in your network.)
+
+Let's read the data and examine it.
+
+```{r, message=FALSE}
+edges_df <- read_csv("data/field-states-edges.csv")
+nodes_df <- read_csv("data/field-states-nodes.csv")
+```
+
+The `nodes_df` table lists out the states that are a part of the network. The column on the far left, `name`, is the identifier for the node. We also have additional data for each node, in this case, the `region` as a categorical variable.
+
+```{r}
+nodes_df
+```
+
+The `edges_df` table show how those nodes are connected. The first two columns, `from` and `to` show that the one node is connected to another. Notice that in this case the network is directed. Alaska borrowed from Oregon, not the other way around.
+
+```{r}
+edges_df
+```
+
+We can turn those data frames into a graph (the mathematical term for a network). To do so we pass in the two data frames, and also indicate whether it is a directed network graph or not. Note that the output looks similar to the two data frames above, but this is now an object that understands that it is a network.
+
+```{r}
+g <- graph_from_data_frame(edges_df, directed = TRUE, vertices = nodes_df) %>%
+  as_tbl_graph()
+g
+```
+
+We can get a quick look at the graph using `plot()`. In general, using plot is ugly and slow, but it is helpful to see what we are dealing with. This plot is historically interesting, because it shows us that New York is at the center, with many other states borrowing from it. But there are also other centers, like California or Indiana. And some states are off on their own, disconnected from the patterns of borrowing. We will eventually refine this plot.
+
+```{r}
+plot(g)
+```
+
+## Measuring the centrality of nodes
+
+Networks can be very hard to visualize in a way that doesn't look like just a hairball. Often you need to try to measure things about networks.
+
+The importance, called *centrality*, of a node can be measured with various algorithms. What makes something important depends on what you are studying, and there are lots of different measures of centrality. (You can look them up by using `?centrality`.) Below we are using a few different options:
+
+- degree is how many edges there are connected to a node. Here, that can be understood as how many states borrowed at least some of their laws from the state in question.
+- betweenness is a measure of how many paths go through a node. It's kind of like a measure of how much of a bottleneck a node could create.
+- closeness is a measure of how many steps it takes to get from one node to every other node, i.e., how close it is to other nodes.
+- hub is another way of measuring whether a node is a critical hub in a network.
+
+These can be added to the graph object as node attributes using `mutate()`. Note that below we pull out the nodes data frame to inspect it and do not save the results back to our graph object `g` just yet.
+
+These measures confirm what we could see from the graph: that New York is important. But note that for some of these measures, California is even more important. New York was the original source of these laws, but California was hugely important in directly influencing Western states.
+
+```{r warning=FALSE}
+centrality <- g %>% 
+  mutate(
+    c_degree = centrality_degree(mode = "in") %>% round(4),
+    c_betweenness = centrality_betweenness() %>% round(4),
+    c_closeness = centrality_closeness(mode = "in") %>% round(4),
+    c_hub = centrality_hub() %>% round(4)
+         ) %>% 
+  as_data_frame(what = "vertices") %>% 
+  arrange(desc(c_degree))
+centrality
+```
+
+There are many other things we could measure about the nodes, the edges, or the network as a whole. See the [tidygraph](https://tidygraph.data-imaginist.com) package documentation for a full list.
+
+## Plotting
+
+Networks can be plotted within the ggplot2 framework using the ggraph package. You will need to include geoms for both edges (`geom_edge_*`) and nodes (`geom_node_*`) to make them both show up. But otherwise, you can use the variables in the node and edge tables with different aesthetics on the graph.
+
+Notice that the position of nodes along the x and y axes is arbitrary. There are many different algorithms to try to layout the graph in a pleasing way. In general "`layout = "nicely"` is not a bad one to try first. (Note that there is an element of randomness to the layout, so here we set a random seed here to make it the same every time. The concept of pseudo-random numbers is more than we need to get into here.)
+
+```{r}
+set.seed(384)
+ggraph(g, layout = "nicely") +
+  geom_edge_fan(arrow = arrow(ends = "first")) +
+  geom_node_point(aes(color = region), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Clustering
+
+One thing we might want to do with network graphs is figure out what the groups, or clusters, are in the data. There are also multipe ways to do this. Here we are creating a new network object, `groups`, after measuring clusters in different ways. Then we plot the new network graph, coloring in the nodes based on the clusters. Try changing `aes(color = walktrap)` to `components` or `betweenness` to see different results.
+
+```{r message=FALSE}
+groups <- g %>% 
+  mutate(walktrap = as.factor(group_walktrap()),
+         components = as.factor(group_components()),
+         betweenness = as.factor(group_edge_betweenness()))
+
+ggraph(groups, layout = "nicely") +
+  geom_edge_fan() +
+  geom_node_point(aes(color = walktrap), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Node-pair level measures
+
+There are many other techniques that we can do with networks. We could for example find the paths from one node to another. Here we are just measuring the distance from one node to New York, since it is at the center of the graph. 
+
+```{r}
+distances <- g %>% 
+  mutate(is_ny = name == "NY",
+         distance = node_distance_from(is_ny, mode = "in")) 
+
+distances
+
+ggraph(distances, layout = "nicely") +
+  geom_edge_fan(arrow = arrow(ends = "first")) +
+  geom_node_point(aes(color = as.factor(distance)), size = 10) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
+## Component graphs
+
+Sometimes parts of a graph are unconnected to other graphs, and it would be nice to pull them out into separate pieces.
+
+```{r}
+components <- g %>% to_components()
+
+plot(components[[1]])
+plot(components[[2]])
+plot(components[[3]])
+```
+
+## Bipartite graphs
+
+A bipartite graph is a graph where the nodes fall into two different groups, and where members of a group are never connected to one another. A common example is a membership graph, with organizations and members. We can load a membership graph for revolutionary organizations in Boston. See [this fun blog post](https://kieranhealy.org/blog/archives/2013/06/09/using-metadata-to-find-paul-revere/) by Kieran Healy. Notice that in this instance we just have an edge table, and not a nodes table. But the nodes table is implied by the edges table, so it will work out.
+
+```{r, message=FALSE}
+revere_edges <- read_csv("data/paul-revere-edges.csv")
+revere_bip <- graph_from_data_frame(revere_edges)
+```
+
+Now that we have the graph loaded we can project it. We have to distinguish between the `type` of the nodes---which belong to which side of the projection. Here we are going to also count how many people and organizations there are, and then the size of the two resulting graphs once we have projected them.
+
+```{r}
+V(revere_bip)$type <- bipartite_mapping(revere_bip)$type
+table(V(revere_bip)$type)
+bipartite_projection_size(revere_bip)
+```
+In this case `TRUE` will correspond to an organization and `FALSE` to an individual. We checked earlier and saw that `TRUE` had many fewer nodes, which means that is the graph of organizations. If we switched `"true"` to `"false"` here we would get a plot of individuals.
+
+```{r}
+revere_org <- bipartite_projection(revere_bip, which = "true")
+plot(revere_org)
+```
