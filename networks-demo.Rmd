@@ -79,7 +79,7 @@ centrality <- g %>%
          ) %>% 
   as_data_frame(what = "vertices") %>% 
   arrange(desc(c_degree))
-centrality
+centrality 
 ```
 
 There are many other things we could measure about the nodes, the edges, or the network as a whole. See the [tidygraph](https://tidygraph.data-imaginist.com) package documentation for a full list.
@@ -91,7 +91,7 @@ Networks can be plotted within the ggplot2 framework using the ggraph package. Y
 Notice that the position of nodes along the x and y axes is arbitrary. There are many different algorithms to try to layout the graph in a pleasing way. In general "`layout = "nicely"` is not a bad one to try first. (Note that there is an element of randomness to the layout, so here we set a random seed here to make it the same every time. The concept of pseudo-random numbers is more than we need to get into here.)
 
 ```{r}
-set.seed(384)
+set.seed(101)
 ggraph(g, layout = "nicely") +
   geom_edge_fan(arrow = arrow(ends = "first")) +
   geom_node_point(aes(color = region), size = 10) +
@@ -111,7 +111,7 @@ groups <- g %>%
 
 ggraph(groups, layout = "nicely") +
   geom_edge_fan() +
-  geom_node_point(aes(color = walktrap), size = 10) +
+  geom_node_point(aes(color = betweenness), size = 10) +
   geom_node_text(aes(label = name)) +
   theme_graph()
 ```
@@ -168,3 +168,12 @@ In this case `TRUE` will correspond to an organization and `FALSE` to an individ
 revere_org <- bipartite_projection(revere_bip, which = "true")
 plot(revere_org)
 ```
+
+```{r}
+ggraph(revere_org, layout = "nicely") +
+  geom_edge_fan(arrow = arrow(ends = "first")) +
+  geom_node_point(size = 10, shape = 1) +
+  geom_node_text(aes(label = name)) +
+  theme_graph()
+```
+
